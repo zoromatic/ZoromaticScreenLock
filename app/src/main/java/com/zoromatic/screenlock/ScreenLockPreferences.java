@@ -3,10 +3,12 @@ package com.zoromatic.screenlock;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ActivityManager;
+import android.app.Dialog;
 import android.app.admin.DeviceAdminInfo;
 import android.app.admin.DevicePolicyManager;
 import android.content.ComponentName;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
@@ -25,6 +27,8 @@ public class ScreenLockPreferences extends PreferenceActivity implements OnShare
     DevicePolicyManager deviceManager;
     ActivityManager activityManager;
     ComponentName compName;
+    public boolean mAboutOpen = false;
+    public static final String ABOUT = "about";
 
     @SuppressWarnings("deprecation")
     @Override
@@ -55,12 +59,47 @@ public class ScreenLockPreferences extends PreferenceActivity implements OnShare
 
                 @Override
                 public boolean onPreferenceClick(Preference p) {
-                    AboutDialog about = new AboutDialog(ScreenLockPreferences.this);
-                    about.setTitle("About Zoromatic ScreenLock");
-                    about.show();
+                    openAboutDialog();
+                    mAboutOpen = true;
                     return true;
                 }
             });
+        }
+
+        if (savedInstanceState != null) {
+            mAboutOpen = savedInstanceState.getBoolean(ABOUT);
+
+            if (mAboutOpen) {
+                openAboutDialog();
+            }
+        }
+    }
+
+    public void openAboutDialog() {
+        AboutDialog about = new AboutDialog(ScreenLockPreferences.this);
+        about.setTitle(getResources().getText(R.string.about_app));
+        about.setOnDismissListener(new Dialog.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialog) {
+                mAboutOpen = false;
+            }
+        });
+        about.show();
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+
+        savedInstanceState.putBoolean(ABOUT, mAboutOpen);
+    }
+
+    @Override
+    public void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+
+        if (savedInstanceState != null) {
+            mAboutOpen = savedInstanceState.getBoolean(ABOUT);
         }
     }
 

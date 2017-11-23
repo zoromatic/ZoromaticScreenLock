@@ -31,7 +31,7 @@ public class AboutDialog extends Dialog {
         tv.setText(readRawTextFile(R.raw.legal));
         tv = (TextView) findViewById(R.id.info_text);
         tv.setText(Html.fromHtml(readRawTextFile(R.raw.info)));
-        tv.setLinkTextColor(Color.WHITE);
+        tv.setLinkTextColor(Color.BLUE);
         Linkify.addLinks(tv, Linkify.ALL);
     }
 
@@ -41,12 +41,13 @@ public class AboutDialog extends Dialog {
         BufferedReader buf = new BufferedReader(in);
         String line;
         StringBuilder text = new StringBuilder();
-        try {
 
+        try {
             while ((line = buf.readLine()) != null) text.append(line);
         } catch (IOException e) {
             return null;
         }
+
         return text.toString();
     }
 }

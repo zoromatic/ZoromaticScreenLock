@@ -14,5 +14,6 @@
 	<string name="optional_message">This is an optional message to warn the user about disabling.</string>
 	<string name="versioncode">1</string>
 	<string name="versionname">1.0</string>
+	<string name="about_app">About Zoromatic ScreenLock</string>
 
 </resources>

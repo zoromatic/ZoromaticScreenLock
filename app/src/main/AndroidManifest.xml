@@ -31,6 +31,7 @@
         <activity
             android:icon="@drawable/lock_screen_settings"
             android:name=".ScreenLockPreferences"
+            android:theme="@style/SettingsTheme"
             android:label="@string/screenlocksettings" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

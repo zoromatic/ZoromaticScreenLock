@@ -9,7 +9,7 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="left|center"
+            android:layout_gravity="left|start|center"
             android:src="@drawable/lock_screen" 
             android:contentDescription="@string/app_name"/>
 
@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="8dip"
             android:layout_span="2"
-            android:textColor="#cccccc"
+            android:textColor="@android:color/darker_gray"
             android:textSize="12sp"
             android:textStyle="italic" />
     </TableRow>
