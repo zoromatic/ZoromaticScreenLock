@@ -22,7 +22,6 @@ public class ScreenLockActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setVisible(false);
-        //setContentView(R.layout.main);
 
         deviceManager = (DevicePolicyManager) getSystemService(Context.DEVICE_POLICY_SERVICE);
         activityManager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);

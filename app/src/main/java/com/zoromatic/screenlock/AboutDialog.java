@@ -16,7 +16,7 @@ import android.graphics.Color;
 import android.widget.TextView;
 
 public class AboutDialog extends Dialog {
-    private static Context mContext = null;
+    private Context mContext = null;
 
     AboutDialog(Context context) {
         super(context);
@@ -27,15 +27,16 @@ public class AboutDialog extends Dialog {
     public void onCreate(Bundle savedInstanceState) {
         setContentView(R.layout.about);
 
-        TextView tv = (TextView) findViewById(R.id.legal_text);
+        TextView tv = findViewById(R.id.legal_text);
         tv.setText(readRawTextFile(R.raw.legal));
-        tv = (TextView) findViewById(R.id.info_text);
+
+        tv = findViewById(R.id.info_text);
         tv.setText(Html.fromHtml(readRawTextFile(R.raw.info)));
         tv.setLinkTextColor(Color.BLUE);
         Linkify.addLinks(tv, Linkify.ALL);
     }
 
-    private static String readRawTextFile(int id) {
+    private String readRawTextFile(int id) {
         InputStream inputStream = mContext.getResources().openRawResource(id);
         InputStreamReader in = new InputStreamReader(inputStream);
         BufferedReader buf = new BufferedReader(in);

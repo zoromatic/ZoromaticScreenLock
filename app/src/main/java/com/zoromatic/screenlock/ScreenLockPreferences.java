@@ -30,7 +30,6 @@ public class ScreenLockPreferences extends PreferenceActivity implements OnShare
     public boolean mAboutOpen = false;
     public static final String ABOUT = "about";
 
-    @SuppressWarnings("deprecation")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -103,7 +102,6 @@ public class ScreenLockPreferences extends PreferenceActivity implements OnShare
         }
     }
 
-    @SuppressWarnings("deprecation")
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         switch (requestCode) {
@@ -130,14 +128,11 @@ public class ScreenLockPreferences extends PreferenceActivity implements OnShare
 
     @Override
     public void onBackPressed() {
-
         finish();
     }
 
-    @SuppressWarnings("deprecation")
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-
         try {
             if (key.equals(Preferences.PREF_LOCK_SCREEN_ADMIN)) {
                 CheckBoxPreference lockScreenAdmin = (CheckBoxPreference) findPreference(Preferences.PREF_LOCK_SCREEN_ADMIN);
@@ -162,7 +157,6 @@ public class ScreenLockPreferences extends PreferenceActivity implements OnShare
 
     }
 
-    @SuppressWarnings("deprecation")
     @Override
     protected void onResume() {
         super.onResume();
@@ -171,7 +165,6 @@ public class ScreenLockPreferences extends PreferenceActivity implements OnShare
         getPreferenceScreen().getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
     }
 
-    @SuppressWarnings("deprecation")
     @Override
     protected void onPause() {
         super.onPause();
